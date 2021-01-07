@@ -1,18 +1,45 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("分數介面")]
+    public Text textScore;
+    [Header("分數")]
+    public int score;
+    [Header("擊中分數")]
+    public int scoreIn = 1;
+    [Header("擊中音效")]
+    public AudioClip soundIn;
+
+    private AudioSource aud;
+
+    private void Awake()
     {
-        
+        aud = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+
+        if (other.tag == "眼球")
+        {
+            AddScore();
+        }
+
+        if (other.transform.root.name == "Player")
+        {
+
+            scoreIn = 1;
+        }
+    }
+    
+
+    // 加分數
+    private void AddScore()
+    {
+        score += scoreIn;   
+        textScore.text = "Score : " + score;  //更新介面
+        aud.PlayOneShot(soundIn, Random.Range(1f, 2f));   
     }
 }
