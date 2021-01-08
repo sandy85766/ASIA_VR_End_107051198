@@ -13,6 +13,7 @@ public class ScoreManager : MonoBehaviour
     public AudioClip soundIn;
 
     private AudioSource aud;
+   
 
     private void Awake()
     {
@@ -32,6 +33,8 @@ public class ScoreManager : MonoBehaviour
 
             scoreIn = 1;
         }
+
+        
     }
     
 
