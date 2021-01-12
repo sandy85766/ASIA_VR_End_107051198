@@ -1,18 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void RestartGame()
     {
-        
+        SceneManager.LoadScene("VR場景");
     }
 
-    // Update is called once per frame
-    void Update()
+    // 離開遊戲
+    public void QuitGame()
     {
-        
+        // 應用程式.離開遊戲()
+        Application.Quit();
     }
 }
